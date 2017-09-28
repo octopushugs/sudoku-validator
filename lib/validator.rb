@@ -1,3 +1,5 @@
+require 'awesome_print'
+
 class Validator
   def initialize(puzzle_string)
     @puzzle_string = puzzle_string
@@ -8,11 +10,12 @@ class Validator
   end
 
   def validate
-    # Start creating your solution here.
-    #
-    # It's likely that you'll want to have many more classes than this one that
-    # was provided for you. Don't be hesistant to extract new objects (and
-    # write tests for them).
+    ap @puzzle_string
   end
 
 end
+
+# If we were gonna be fancy we'd use optparse to grab the arguments and generate a
+# --help, but that seems like a good approach for v1.1. For now running with the first arg
+# should be sufficient
+validator = Validator.validate(ARGV[0])
