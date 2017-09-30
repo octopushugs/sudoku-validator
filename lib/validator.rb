@@ -35,20 +35,23 @@ class Validator
       # bulds the test rows. this is the most simple part
       test_rows << num_row.map(&:to_i)
 
-      # this builds the testable columns by iterating over each row, taking the nth digit and adding it the nth index
-      # of the containing array
       num_row.each_with_index do |number, index|
+        # this builds the testable columns by iterating over each row, taking the nth digit and adding it the nth index
+        # of the containing array
         test_columns[index] ||= []
         test_columns[index] << number.to_i
+      end
 
-
+      num_row.each_slice(3).with_index do |numbers, index|
         # using the row_counter plus the index, we have a coordinate for each number, so use that to build up the
         # sub_groups into testable arrays
+        ap [row_counter, index]
       end
-    end
 
-    # increment the counter
-    row_counter += 1
+
+      # increment the counter
+      row_counter += 1
+    end
 
     test_validity(test_rows)
     test_validity(test_columns)
