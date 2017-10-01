@@ -1,16 +1,14 @@
+require 'spec_helper'
+
 require_relative "../lib/validator"
 
 describe "End-to-end test" do
-
-  # Note: these specs are supposed to fail when you first start this exercise.
-  # Your job is to make them pass.
-
   context "when the sudoku is valid" do
     context "and it is complete" do
       it "returns a string saying so" do
-        file = File.read("spec/fixtures/valid_complete.sudoku")
+        file_path = "spec/fixtures/valid_complete.sudoku"
 
-        result = Validator.validate(file)
+        result = Validator.validate(file_path)
 
         expect(result).to eq "This sudoku is valid."
       end
@@ -18,9 +16,9 @@ describe "End-to-end test" do
 
     context "and it is incomplete" do
       it "returns a string saying so" do
-        file = File.read("spec/fixtures/valid_incomplete.sudoku")
+        file_path = "spec/fixtures/valid_incomplete.sudoku"
 
-        result = Validator.validate(file)
+        result = Validator.validate(file_path)
 
         expect(result).to eq "This sudoku is valid, but incomplete."
       end
@@ -34,7 +32,7 @@ describe "End-to-end test" do
 
     invalid_fixtures.each do |fixture|
       it "returns a string saying so" do
-        result = Validator.validate(File.read(fixture))
+        result = Validator.validate(fixture)
 
         expect(result).to(
           eq("This sudoku is invalid."),
