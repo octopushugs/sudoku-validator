@@ -3,9 +3,6 @@ require 'spec_helper'
 require_relative "../lib/validator"
 
 describe "End-to-end test" do
-  # Note: these specs are supposed to fail when you first start this exercise.
-  # Your job is to make them pass.
-
   context "when the sudoku is valid" do
     context "and it is complete" do
       it "returns a string saying so" do
@@ -36,7 +33,7 @@ describe "End-to-end test" do
     invalid_fixtures.each do |fixture|
       it "returns a string saying so" do
         result = Validator.validate(fixture)
-        puts result
+
         expect(result).to(
           eq("This sudoku is invalid."),
           "Expected #{fixture} to be invalid but it wasn't."

@@ -1,5 +1,3 @@
-require 'awesome_print'
-
 class Validator
   def self.validate(file_name)
     @file_name = file_name
@@ -99,7 +97,6 @@ class Validator
   # returns a boolean indicating whether or not the arry has duplicate values
   def contains_dupe_values? arr
     arr.delete_if { |value| value == 0 }
-    ap arr == arr.uniq
     return arr != arr.uniq
   end
 
